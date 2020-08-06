@@ -47,7 +47,9 @@ Lista de comandos basico que debes manejar al empezar git.
 | $git rm --cached archivo.extencion | se usa para devolver el archivo que se tiene en ram cuando escribimos git add lo devuleve a estado natural mientra esta en staging. |
 | $git config --list  | muestra la lista de configuracion de git. |
 | $git config --list --show-origin | rutas de acceso a la configuración de git. |
-| $ git log archivo.extencion  | muestra la historia del archivo. |
+| $git log archivo.extencion  | muestra la historia del archivo. |
+| $git rm --cached  | Elimina los archivos del área de Staging y del próximo commit pero los mantiene en nuestro disco duro. |
+| $git rm --force  | Elimina los archivos de Git y del disco duro. Git siempre guarda todo, por lo que podemos acceder al registro de la existencia de los archivos, de modo que podremos recuperarlos si es necesario (pero debemos usar comandos más avanzados). |
 
 ```$git diff _tag1_ _tag2_```
 - Hace la comparativa de cambios entre el archivo en su etapa en el commit del tag1 y del tag2. Considera al más reciente como tag2 y al anterior como tag1, SI IMPORTA EL ORDEN DE LOS TAGS
@@ -59,6 +61,9 @@ Lista de comandos basico que debes manejar al empezar git.
 
 ```git reset #commit --hard```
 - ES MUY PELIGROSO, Volvemos nuestro archivo a la versión del commit indicada, BORRANDO TODOS los commits usados anteriores a la versión del commit indicado.
+
+```git reset HEAD```
+- Este es el comando para sacar archivos del área de Staging. No para borrarlos ni nada de eso, solo para que los últimos cambios de estos archivos no se envíen al último commit, a menos que cambiemos de opinión y los incluyamos de nuevo en staging con git add, por supuesto.
 
 ```$git checkout #commit archivo.txt```
 - Volvemos nuestro archivo a la versión del commit indicado, sin cambiar nada en el Staging.
