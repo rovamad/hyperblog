@@ -89,3 +89,15 @@ git log --grep=“INVIE” –i- Busca los commits que cumplan sin importar may�
 git log – index.html- Busca los commits en un archivo en específico.
 git log -S “Por contenido”- Buscar los commits con el contenido dentro del archivo.
 git log > log.txt - guardar los logs en un archivo txt
+
+### Introduccion a las ramas o branches de Git
+
+$git commit -am “MENSAJE” = Agrega y manda el mensaje es decir hace la función de "$git add" y "$git commit -m" al mismo tiempo, este solo aplica para archivos ya trackeados en el repositorio.
+$git branch nombre_rama = Se crea la rama teniendo en cuenta que uno se debe de posicionar en la rama que se necesita copiar.
+$git branch -l = Lista todas las ramas que existen.
+$git branch -d nombre_rama = Elimina la rama nombre_rama. Con -D se fuerza el borrado.
+$git branch -m nombre_rama rama_nueva = Permite renombrar una rama nombre_rama por rama_nueva.
+$git checkout nombre_rama = Aqui se cambia la rama que se le indico.
+
+### Fusión de ramas con Git merge
+
