@@ -101,3 +101,21 @@ $git checkout nombre_rama = Aqui se cambia la rama que se le indico.
 
 ### Fusión de ramas con Git merge
 
+Desde la Rama en la que estoy me traigo los cambios de otra rama con:
+$git merge nombre_de_la_rama
+
+Algunos comandos que están en el libro Pro Git de utilidad
+
+$git branch –v // muestra el último commit de cada rama
+$git branch --merged // lista las ramas que se fusionaron conla rama actual
+$git branch --no-merged // lista las ramas que nose han fusionado conla rama actual
+$git merge --abort // anula el merge y devuelve todo a como estaba antes
+
+### Uso de GitHub
+
+$git remote add origin (url)
+$git remote (muestra el origen)
+$git remote -v (es verval)
+$git pull origin master --allow-unrelated-histories (Fuerza la union de las diferentes historias)
+$git pull origin master (Descarga cambios)
+$git push (origin) (master) (Sube Cambios)
