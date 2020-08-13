@@ -119,3 +119,11 @@ $git remote -v (es verval)
 $git pull origin master --allow-unrelated-histories (Fuerza la union de las diferentes historias)
 $git pull origin master (Descarga cambios)
 $git push (origin) (master) (Sube Cambios)
+
+### Tags y versiones en Git y GitHub
+
+Crear un nuevo tag y asignarlo a un commit: git tag -a nombre-del-tag id-del-commit.
+Borrar un tag en el repositorio local: git tag -d nombre-del-tag.
+Listar los tags de nuestro repositorio local: git tag o git show-ref --tags.
+Publicar un tag en el repositorio remoto: git push origin --tags.
+Borrar un tag del repositorio remoto: git tag -d nombre-del-tag y git push origin :refs/tags/nombre-del-tag.
