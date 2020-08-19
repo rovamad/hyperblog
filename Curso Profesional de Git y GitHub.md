@@ -237,3 +237,104 @@ A veces creamos archivos cuando estamos realizando nuestro proyecto que realment
 - Para saber qué archivos vamos a borrar tecleamos ```$git clean --dry-run```
 - Para borrar todos los archivos listados (que no son carpetas) tecleamos ```$git clean -f```
 - Para borrar todos los archivos y carpetas listadas tecleamos ```$git clean -df```
+
+### Git cherry-pick: traer commits viejos al head de un branch
+
+Este comando permite coger uno o varios commits de otra rama sin tener que hacer un merge completo. Así, gracias a cherry-pick, podríamos aplicar los commits relacionados con nuestra funcionalidad de Facebook en nuestra rama master sin necesidad de hacer un merge.
+
+Para demostrar cómo utilizar git cherry-pick, supongamos que tenemos un repositorio con el siguiente estado de rama:
+
+```
+a - b - c - d   Master
+         \
+           e - f - g Feature
+```
+El uso de git cherry-pick es sencillo y se puede ejecutar de la siguiente manera:
+
+```$git checkout master```
+
+En este ejemplo, commitSha es una referencia de confirmación. Puedes encontrar una referencia de confirmación utilizando el comando git log. En este caso, imaginemos que queremos utilizar la confirmación ‘f’ en la rama master. Para ello, primero debemos asegurarnos de que estamos trabajando con esa rama master.
+
+```$git cherry-pick f```
+
+Una vez ejecutado, el historial de Git se verá así:
+
+```
+a - b - c - d - f   Master
+         \
+           e - f - g Feature
+```
+
+La confirmación f se ha sido introducido con éxito en la rama de funcionalidad
+
+### Reconstruir commits en Git con amend
+
+Puede modificar el commit más reciente (enmendar) en la misma rama ejecutando:
+
+```$
+$git add -A # Para hacer uso de ammend los archivos deben de estar en staging
+$git commit --amend # Remendar último commit
+```
+Este comando sirve para agregar archivos nuevos o actualizar el commit anterior y no generar commits innecesarios.
+
+También es una forma sencilla de editar o agregar comentarios al commit anterior porque abrirá la consola para editar el commit anterior.
+
+Nota: Es una mala práctica hacer ammend de un commit que ya ha sido pusheado o pulleado del repositorio remoto, al momento de hacer ammend con algún commit que esté en remoto va a generar un conflicto que se va a arreglar haciendo un commit adicional y se perderá el beneficio del ammend.
+
+### Git Reset y Reflog: úsese en caso de emergencia
+
+##### Git nunca olvida, git reflog
+
+Git guarda todos los cambios aunque decidas borrarlos, al borrar un cambio lo que estás haciendo sólo es actualizar la punta del branch, para gestionar éstas puntas existe un mecanismo llamado registros de referencia o reflogs.
+
+La gestión de estos cambios es mediante los hash’es de referencia (o ref) que son apuntadores a los commits.
+
+Los recoges registran cuándo se actualizaron las referencias de Git en el repositorio local (sólo en el local), por lo que si deseas ver cómo has modificado la historia puedes utilizar el comando:
+
+```$git reflog```
+
+Muchos comandos de Git aceptan un parámetro para especificar una referencia o “ref”, que es un puntero a una confirmación sobre todo los comandos:
+git checkout Puedes moverte sin realizar ningún cambio al commit exacto de la ref
+
+```$git checkout eff544f```
+
+git reset: Hará que el último commit sea el pasado por la ref, usar este comando sólo si sabes exactamente qué estás haciendo
+
+```$git reset --hard eff544f # Perderá todo lo que se encuentra en staging y en el Working directory y se moverá el head al commit eff544f
+$git reset --soft eff544f # Te recuperará todos los cambios que tengas diferentes al commit eff544f, los agregará al staging area y moverá el head al commit eff544f```
+
+git merge: Puedes hacer merge de un commit en específico, funciona igual que con una branch, pero te hace el merge del estado específico del commit mandado
+
+```$git checkout master
+$git merge eff544f # Fusionará en un nuevo commit la historia de master con $el momento específico en el que vive eff544f```
+
+### Buscar en archivos y commits de Git con Grep y log
+
+| Comando | Descripción |
+| ------ | ------ |
+|```$git grep color``` | Use la palabra color |
+|```$git grep la``` | Donde use la palabra la |
+|```$git grep -n color``` | En que lineas use la palabra color |
+|```$git grep -n platzi``` | En que lineas use la palabra platzi |
+|```$git grep -c la``` | Cuantas veces use la palabra la |
+|```$git grep -c paltzi``` | Cuantas veces use la palabra platzi |
+|```$git grep -c “<p>”``` | Cuantas veces use la etiqueta <p> |
+|```$git log-S “cabecera”``` | Cuantas veces use la palabra cabecera en
+todos los commits.|
+|grep| Para los archivos|
+|log | Para los commits.|
+
+### Comandos y recursos colaborativos en Git y GitHub
+
+| Comando | Descripción |
+| ------ | ------ |
+|```$git shortlog```| Ver cuantos commits a hecho los miembros del equipo|
+|```$git shortlog -sn```| Las personas que han hecho ciertos commits|
+|```$git shortlog -sn --all```| Todos los commits (también los borrados)|
+|```$git shortlog -sn --all --no-merges```: muestra las estadisticas de los comigs del repositorio donde estoy|
+|```$git config --global alias.<nombre_del_alias> “<comando_a_invocar_con_alias>”```| configura el comando, ejemplo para ```$git config --global alias.stats “shortlog -sn --all --no-merges”``` “shortlog -sn --all --no-merges” en un Alias en las configuraciones globales de git del pc|
+|```$git blame -c blogpost.html```| Muestra quien ha hecho cambios en dicho archivo identado|
+|```$git blame --help```| Muestra en el navegador el uso del comando|
+|```$git blame archivo -L 35, 60 -c```| Muestra quien escribio el codigo con informacion de la linea 35 a la 60, EJ: git blame css/estilos.css -L 35, 60 -c|
+|```$git branch -r```| Muestra las Ramas remotas de GitHub|
+|```$git branch -a```| Muestra todas las Ramas del repo y remotas de GitHub|
