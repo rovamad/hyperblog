@@ -335,7 +335,7 @@ todos los commits.|
 |```$git shortlog```| Ver cuantos commits a hecho los miembros del equipo|
 |```$git shortlog -sn```| Las personas que han hecho ciertos commits|
 |```$git shortlog -sn --all```| Todos los commits (también los borrados)|
-|```$git shortlog -sn --all --no-merges```: muestra las estadisticas de los comigs del repositorio donde estoy|
+|```$git shortlog -sn --all --no-merges```| muestra las estadisticas de los comigs del repositorio donde estoy|
 |```$git config --global alias.<nombre_del_alias> “<comando_a_invocar_con_alias>”```| configura el comando, ejemplo para ```$git config --global alias.stats “shortlog -sn --all --no-merges”``` “shortlog -sn --all --no-merges” en un Alias en las configuraciones globales de git del pc|
 |```$git blame -c blogpost.html```| Muestra quien ha hecho cambios en dicho archivo identado|
 |```$git blame --help```| Muestra en el navegador el uso del comando|
