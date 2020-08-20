@@ -307,8 +307,10 @@ $git reset --soft eff544f # Te recuperará todos los cambios que tengas diferent
 
 git merge: Puedes hacer merge de un commit en específico, funciona igual que con una branch, pero te hace el merge del estado específico del commit mandado
 
-```$git checkout master
-$git merge eff544f # Fusionará en un nuevo commit la historia de master con $el momento específico en el que vive eff544f```
+```
+$git checkout master
+$git merge eff544f # Fusionará en un nuevo commit la historia de master con $el momento específico en el que vive eff544f
+```
 
 ### Buscar en archivos y commits de Git con Grep y log
 
